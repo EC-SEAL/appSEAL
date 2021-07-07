@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>eMRTD retrieve process</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="response_emrtd == null">
+    <h3 text-center>Sending the data, please wait...</h3> 
+  </div>
+
+  <div *ngIf="response_emrtd != null">
+    <div class="text-center">
+      <h3 text-center>{{ process_success }}</h3> 
+    </div>
+  </div>
+
+</ion-content>

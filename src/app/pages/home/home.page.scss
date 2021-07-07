@@ -1,0 +1,21 @@
+.home ion-row > ion-col > button {
+  text-align: center;
+  color: #162b6f;
+  background-color: #FFF;
+}
+
+ion-grid {
+  height: 100%;
+}
+
+ion-row {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+menu-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

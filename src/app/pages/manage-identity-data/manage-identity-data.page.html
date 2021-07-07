@@ -1,0 +1,174 @@
+<ion-header [translucent]="true" class="ion-no-border">
+
+  <ion-toolbar> 
+    <ion-title style="text-align: center" class="seal-grey">
+      <br>
+      <img src="assets/images/logo_seal_superpequeno.png" style="vertical-align: middle;"><br>MOBILE DASHBOARD
+    </ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="manage-identity-data">
+
+    <div *ngIf="identitiesList == null || identitiesList.length == 0">
+
+        <ion-label><h2><strong>{{ strNoIdentites }}</strong></h2></ion-label>
+
+    </div>
+
+    <div>
+
+      <ion-list *ngFor="let tabName of uniqueProviders" id="list-{{ tabName }}" lines="none">
+
+            <ion-list-header>
+              <ion-label><h2><strong>{{ tabName }}</strong></h2></ion-label>
+            </ion-list-header>
+           
+            <ng-container *ngFor="let identity of identitiesList">
+
+              <ion-item *ngIf="identity.provider == tabName">   
+                        
+                <ion-card *ngIf="identity.provider != 'linkedID'">
+
+                  <ion-card-header color="tertiary">
+
+                    <ion-button *ngIf="tabName == 'linkRequest'" (click)="submitRequest(identity.id)" name="identity.id">Submit pending request</ion-button>
+
+                    <ion-card-subtitle><strong>{{ identity.id }}</strong></ion-card-subtitle>
+                    <ion-card-subtitle><strong>Issued on: {{ identity.issued }}</strong></ion-card-subtitle>
+                    <ion-card-subtitle><strong>LoA: {{ identity.loa }}</strong></ion-card-subtitle>
+                    
+                  </ion-card-header>
+                
+                  <ion-card-content>
+
+                    <ion-list lines="none">                  
+
+                      <ion-item *ngFor="let attr of identity.attributes">
+
+                        <div *ngIf="attr.values.length == 1">
+
+                          <ion-label *ngIf="attr.values[0] === null">{{attr.friendlyName}}: None</ion-label>
+                          <ion-label *ngIf="attr.values[0] != null">{{attr.friendlyName}}: {{attr.values[0]}}</ion-label>
+
+                        </div>
+                        
+                        <ion-list *ngIf="attr.values.length > 1">                   
+
+                          <ion-label>{{attr.friendlyName}}: </ion-label>
+
+                          <ion-item *ngFor="let value of attr.values">
+                            <ion-label>{{value}}</ion-label>
+                          </ion-item>
+
+                        </ion-list>   
+
+                      </ion-item>
+
+                    </ion-list>
+
+                  </ion-card-content>
+
+                </ion-card>
+
+
+                <ion-card *ngIf="identity.provider == 'linkedID'">
+
+                  <ion-card-header color="tertiary">
+
+                    <ion-card-subtitle><strong>{{ identity.id }}</strong></ion-card-subtitle>
+                    <ion-card-subtitle><strong>Issued on: {{ identity.issued }}</strong></ion-card-subtitle>
+                    <ion-card-subtitle><strong>LLoA: {{ identity.lloa }}</strong></ion-card-subtitle>
+                    
+                  </ion-card-header>
+                
+                  <ion-card-content>
+
+                    <ion-list lines="none">                  
+
+                      <ion-card-header color="tertiary">
+                          <ion-card-subtitle>Dataset A: </ion-card-subtitle>
+                          <ion-card-subtitle>ID: {{ identity.datasetA.id }}</ion-card-subtitle>
+                          <ion-card-subtitle>LoA: {{ identity.datasetA.loa }}</ion-card-subtitle>
+                      </ion-card-header>
+
+                      <ion-card-content>
+                          <ion-item *ngFor="let attr of identity.datasetA.attributes">
+
+                            <div *ngIf="attr.values.length == 1">
+        
+                              <ion-label *ngIf="attr.values[0] === null">{{attr.friendlyName}}: None</ion-label>
+                              <ion-label *ngIf="attr.values[0] != null">{{attr.friendlyName}}: {{attr.values[0]}}</ion-label>
+        
+                            </div>
+        
+                            <ion-list *ngIf="attr.values.length > 1">                   
+        
+                              <ion-label>{{attr.friendlyName}}: </ion-label>
+        
+                              <ion-item *ngFor="let value of attr.values">
+                                <ion-label>{{value}}</ion-label>
+                              </ion-item>
+        
+                            </ion-list>   
+        
+                          </ion-item>
+                      </ion-card-content>
+
+                      <ion-card-header color="tertiary">
+                          <ion-card-subtitle>Dataset B: </ion-card-subtitle>
+                          <ion-card-subtitle>ID: {{ identity.datasetB.id }}</ion-card-subtitle>
+                          <ion-card-subtitle>LoA: {{ identity.datasetB.loa }}</ion-card-subtitle>
+                      </ion-card-header>
+
+                      <ion-card-content>
+                          <ion-item *ngFor="let attr of identity.datasetB.attributes">
+
+                            <div *ngIf="attr.values.length == 1">
+        
+                              <ion-label *ngIf="attr.values[0] === null">{{attr.friendlyName}}: None</ion-label>
+                              <ion-label *ngIf="attr.values[0] != null">{{attr.friendlyName}}: {{attr.values[0]}}</ion-label>
+        
+                            </div>
+        
+                            <ion-list *ngIf="attr.values.length > 1">                   
+        
+                              <ion-label>{{attr.friendlyName}}: </ion-label>
+        
+                              <ion-item *ngFor="let value of attr.values">
+                                <ion-label>{{value}}</ion-label>
+                              </ion-item>
+        
+                            </ion-list>   
+        
+                          </ion-item>
+                      </ion-card-content>                    
+
+                    </ion-list>
+
+                  </ion-card-content>
+
+                </ion-card>   
+
+              </ion-item>
+      
+            </ng-container>
+
+      </ion-list>
+
+    </div>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+
+  <ion-toolbar>
+    <ion-title style="text-align: center; font-family: Helvetica; font-size: x-small;" class="seal-grey">
+      <img src="assets/images/eu.png" style="vertical-align: middle;" width="35" alt="INEA/CEF/ICT/A2018/1633170"> INEA/CEF/ICT/A2018/1633170
+      &nbsp;&nbsp;&nbsp;
+      <a href="https://project-seal.eu/node/141">Privacy policy</a>
+    </ion-title>
+  </ion-toolbar>
+
+</ion-footer>

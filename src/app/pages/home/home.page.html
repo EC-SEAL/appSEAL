@@ -1,0 +1,88 @@
+<ion-header [translucent]="true" class="ion-no-border">
+    
+  <ion-toolbar> 
+    <ion-title style="text-align: center" class="seal-grey">
+      <br>
+      <img src="assets/images/logo_seal_superpequeno.png" style="vertical-align: middle;"><br>MOBILE DASHBOARD
+    </ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="home">
+
+  <ion-grid class="ion-text-center">
+
+    <ion-row>
+      <ion-col>
+        <button (click)="datastoreAction()">
+          <ion-icon name="document-lock" aria-hidden="true" style="font-size: 4em;"></ion-icon> <br />
+          PDS
+        </button>        
+      </ion-col>
+
+      <ion-col>
+        <button (click)="linkSSI()">
+          <ion-icon name="analytics" aria-hidden="true" style="font-size: 4em;"></ion-icon> <br />
+          SSI
+        </button>        
+      </ion-col>      
+    </ion-row>
+    
+    <ion-row>
+      <ion-col>
+        <button (click)="manageIdentityData()">
+          <ion-icon name="file-tray-full" aria-hidden="true" style="font-size: 4em;"></ion-icon> <br />
+          Manage Identity Data
+        </button>        
+      </ion-col>
+
+      <ion-col>
+        <button (click)="retrieveIdentitySources()">
+          <ion-icon name="card" aria-hidden="true" style="font-size: 4em;"></ion-icon> <br />
+          Retrieve Identity Data
+        </button>        
+      </ion-col>      
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button (click)="identityReconciliationMethods()">
+          <ion-icon name="documents" aria-hidden="true" style="font-size: 4em;"></ion-icon> <br />
+          Identity Link
+        </button>        
+      </ion-col>
+
+      <ion-col>
+        <button (click)="VCissuer()">
+          <ion-icon name="newspaper" aria-hidden="true" style="font-size: 4em;"></ion-icon> <br />
+          Issue Verifiable Credentials
+        </button>        
+      </ion-col>      
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button (click)="deriveIdentifier()">
+          <ion-icon name="expand" aria-hidden="true" style="font-size: 4em;"></ion-icon> <br />
+          Derive Identifier
+        </button>        
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+
+
+<ion-footer class="ion-no-border">
+
+  <ion-toolbar>
+    <ion-title style="text-align: center; font-family: Helvetica; font-size: x-small;" class="seal-grey">
+      <img src="assets/images/eu.png" style="vertical-align: middle;" width="35" alt="INEA/CEF/ICT/A2018/1633170"> INEA/CEF/ICT/A2018/1633170
+      &nbsp;&nbsp;&nbsp;
+      <a href="https://project-seal.eu/node/141">Privacy policy</a>
+    </ion-title>
+  </ion-toolbar>
+
+</ion-footer>

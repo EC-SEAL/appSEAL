@@ -1,0 +1,7 @@
+{
+  "name": "appSEAL",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

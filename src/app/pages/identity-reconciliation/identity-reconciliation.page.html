@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Identities Selector</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-list-header>
+      <ion-label>
+        Please select two identities to make a link request:
+      </ion-label>
+    </ion-list-header>
+  
+    <ion-item>
+
+      <ion-select [(ngModel)]="identitiesSelected.identityA" name="identityA" placeholder="Select Identity A">
+
+        <div *ngFor="let identity of identitiesList" >
+
+          <div *ngFor="let attr of identity.attributes">
+
+            <div *ngFor="let value of attr.values">
+
+              <div *ngIf="attr.friendlyName.toLowerCase() == 'givenname'">  
+                
+                  <ion-select-option [value]="identity.id"> {{ identity.provider }} - {{ identity.id | slice:50:63 }} - {{ value }} </ion-select-option>
+
+              </div>   
+            
+            </div>
+                              
+          </div> 
+
+        </div>
+        
+      </ion-select>
+
+    </ion-item>
+
+    <ion-item>
+
+      <ion-select [(ngModel)]="identitiesSelected.identityB" name="identityB" placeholder="Select Identity B">
+
+        <div *ngFor="let identity of identitiesList" >
+
+          <div *ngFor="let attr of identity.attributes">
+
+            <div *ngFor="let value of attr.values">
+
+              <div *ngIf="attr.friendlyName.toLowerCase() == 'givenname'">  
+                
+                  <ion-select-option [value]="identity.id"> {{ identity.provider }} - {{ identity.id | slice:50:63 }} - {{ value }} </ion-select-option>
+
+              </div>   
+            
+            </div>
+                              
+          </div> 
+
+        </div>
+        
+      </ion-select>
+
+    </ion-item>
+
+  </ion-list>
+
+  <ng-container>
+
+    <ion-button expand="block" (click)="identityReconciliation()">Link Request</ion-button>
+
+  </ng-container>
+
+</ion-content>
