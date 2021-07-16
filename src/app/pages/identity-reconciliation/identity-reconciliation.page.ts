@@ -15,6 +15,8 @@ export class IdentityReconciliationPage implements OnInit {
   private UUID = null;
   private uniqueProviders = null;
   private identitiesList = null;
+  private readonly CONST_BEGIN_INDEX = 50;
+  private readonly CONST_END_INDEX = 63;
 
   identitiesSelected = { identityA: '', identityB: ''};
 
@@ -138,5 +140,30 @@ export class IdentityReconciliationPage implements OnInit {
     }    
     
   } //identityReconciliation
+
+
+  returnGivenName(_identity) {
+
+    let objAtrribute = _identity.attributes.find(attribute => attribute.friendlyName.toLowerCase() === 'givenname');
+
+    if (objAtrribute) {
+      let strGivenName = objAtrribute['values'][0];
+      return "- " + strGivenName 
+    } else {
+      return '';
+    }
+
+  } // returnGivenName
+
+
+  extractIdentitySubstr(_id) {
+
+    if (_id) {
+      return _id.slice(this.CONST_BEGIN_INDEX,this.CONST_END_INDEX);  // identity.id | slice:50:63
+    } else {
+      return ''
+    }
+
+  } // extractIdentitySubstr
 
 }

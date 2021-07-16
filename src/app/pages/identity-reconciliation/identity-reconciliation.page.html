@@ -18,21 +18,13 @@
 
       <ion-select [(ngModel)]="identitiesSelected.identityA" name="identityA" placeholder="Select Identity A">
 
-        <div *ngFor="let identity of identitiesList" >
+        <div *ngFor="let identity of identitiesList">
 
-          <div *ngFor="let attr of identity.attributes">
-
-            <div *ngFor="let value of attr.values">
-
-              <div *ngIf="attr.friendlyName.toLowerCase() == 'givenname'">  
-                
-                  <ion-select-option [value]="identity.id"> {{ identity.provider }} - {{ identity.id | slice:50:63 }} - {{ value }} </ion-select-option>
-
-              </div>   
+          <div *ngIf="identity.provider === 'eIDAS' || identity.provider === 'eduGAIN' || identity.provider === 'eMRTD'">
             
-            </div>
-                              
-          </div> 
+            <ion-select-option [value]="identity.id"> {{ identity.provider }} - {{ extractIdentitySubstr(identity.id)  }} {{ returnGivenName(identity) }} </ion-select-option>
+
+          </div>
 
         </div>
         
@@ -44,21 +36,13 @@
 
       <ion-select [(ngModel)]="identitiesSelected.identityB" name="identityB" placeholder="Select Identity B">
 
-        <div *ngFor="let identity of identitiesList" >
+        <div *ngFor="let identity of identitiesList">
 
-          <div *ngFor="let attr of identity.attributes">
-
-            <div *ngFor="let value of attr.values">
-
-              <div *ngIf="attr.friendlyName.toLowerCase() == 'givenname'">  
-                
-                  <ion-select-option [value]="identity.id"> {{ identity.provider }} - {{ identity.id | slice:50:63 }} - {{ value }} </ion-select-option>
-
-              </div>   
+          <div *ngIf="identity.provider === 'eIDAS' || identity.provider === 'eduGAIN' || identity.provider === 'eMRTD'">
             
-            </div>
-                              
-          </div> 
+            <ion-select-option [value]="identity.id"> {{ identity.provider }} - {{ extractIdentitySubstr(identity.id)  }} {{ returnGivenName(identity) }} </ion-select-option>
+
+          </div>
 
         </div>
         
